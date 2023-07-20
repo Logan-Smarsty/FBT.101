@@ -63,35 +63,35 @@ public class MainActivity extends AppCompatActivity {
                 .add(user)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
 
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                //Toast.makeText(getApplicationContext(),"Success", Toast.LENGTH_LONG).show();
-            }
-        })
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                        //Toast.makeText(getApplicationContext(),"Success", Toast.LENGTH_LONG).show();
+                    }
+                })
                 .addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                //Toast.makeText(getApplicationContext(), "Failure", Toast.LENGTH_LONG).show();
-                Log.w(TAG, "Error adding document", e);
-            }
-        });
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //Toast.makeText(getApplicationContext(), "Failure", Toast.LENGTH_LONG).show();
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
 
         db.collection("users")
                 .get()
-        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
-            @Override
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
+                    @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task){
-                if (task.isSuccessful()){
-                    for(QueryDocumentSnapshot document : task.getResult()) {
-                        Log.d(TAG, document.getId() + " => " + document.getData());
+                        if (task.isSuccessful()){
+                            for(QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                            }
+                        }
+                        else{
+                            Log.w(TAG, "Error getting documents", task.getException());
+                        }
                     }
-                }
-                else{
-                    Log.w(TAG, "Error getting documents", task.getException());
-                }
-            }
-        });
+                });
 
 
 

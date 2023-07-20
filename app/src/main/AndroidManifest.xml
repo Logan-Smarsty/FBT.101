@@ -29,7 +29,8 @@
                 <data
                     android:scheme="http"
                     android:host="www.FirebaseTest.com"
-                    android:pathPattern="/testingfirebase" />
+                    android:pathPattern="/testingfirebase"
+                    tools:ignore="AppLinkUrlError" />
             </intent-filter>
         </activity>
     </application>
